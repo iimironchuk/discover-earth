@@ -1,3 +1,4 @@
+import 'package:discover_earth/resources/app_theme.dart';
 import 'package:discover_earth/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
+      theme: AppTheme.themeData,
       home: const MainScreen(),
     );
   }
