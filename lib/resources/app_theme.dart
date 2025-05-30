@@ -9,22 +9,35 @@ class AppTheme {
 
   static AppTheme get instance => _instance;
 
-  static const TextStyle titleText = TextStyle(
-    fontSize: 30.0,
-    fontWeight: FontWeight.w500,
-    fontFamily: 'CormorantGaramond'
+  static  TextStyle titleText = TextStyle(
+    fontWeight: FontWeight.w400,
+    fontFamily: 'CormorantGaramond',
   );
 
   static TextStyle montserratText = TextStyle(
-    fontWeight: FontWeight.w400,
-      fontFamily: 'Montserrat'
+    fontSize: 14.0,
+    fontWeight: FontWeight.w300,
+    fontFamily: 'Montserrat',
   );
 
   static TextStyle pacificoText = TextStyle(
-    fontWeight: FontWeight.w400,
-    fontFamily: 'Pacifico'
+    fontSize: 30.0,
+    fontWeight: FontWeight.w500,
+    color: AppColors.mainGreen,
+    fontFamily: 'Pacifico',
   );
 
+  static ElevatedButtonThemeData elevatedButton = ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: AppColors.mainSand,
+      textStyle: const TextStyle(
+        fontSize: 14.0,
+        fontWeight: FontWeight.w500,
+        fontFamily: 'Montserrat',
+      ),
+      foregroundColor: AppColors.scaffold,
+    ),
+  );
 
   static ThemeData themeData = ThemeData(
     textTheme: TextTheme(
@@ -32,5 +45,6 @@ class AppTheme {
       labelMedium: montserratText,
       bodyMedium: pacificoText,
     ),
+    elevatedButtonTheme: elevatedButton,
   );
 }

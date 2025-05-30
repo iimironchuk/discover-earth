@@ -13,6 +13,8 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   separated_row: ^3.0.4
+  flutter_svg: ^2.1.0
+  responsive_framework: ^1.5.1
 
 dev_dependencies:
   flutter_test:
@@ -27,7 +29,9 @@ flutter:
 
   uses-material-design: true
 
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
+    - assets/icons/
 
   fonts:
     - family: CormorantGaramond
