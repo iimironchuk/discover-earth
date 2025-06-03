@@ -1,0 +1,156 @@
+import 'package:discover_earth/gen/assets.gen.dart';
+import 'package:discover_earth/resources/app_colors.dart';
+import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+
+class ExpeditionTile extends StatelessWidget {
+  final String expeditionTitle;
+  final String date;
+  final String description;
+  final int groupSize;
+  final AssetGenImage image;
+
+  const ExpeditionTile({
+    super.key,
+    required this.expeditionTitle,
+    required this.date,
+    required this.groupSize,
+    required this.description,
+    required this.image,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final double tileHeight = 570.0;
+    final smallerThatDesktop = ResponsiveBreakpoints.of(
+      context,
+    ).smallerThan(DESKTOP);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      child: Container(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
+        width: 600.0,
+        height: tileHeight,
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: image.image(fit: BoxFit.cover),
+              ),
+            ),
+            Positioned(
+              top: 16.0,
+              right: 16.0,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(9),
+                  color: AppColors.mainSand,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
+                  child: Text(
+                    'Limited Spaces',
+                    style: textTheme.labelMedium!.copyWith(
+                      color: AppColors.scaffold,
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              // height: 250.0,
+              child: Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: AppColors.scaffold,
+                  borderRadius: const BorderRadius.vertical(
+                    bottom: Radius.circular(16),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(32.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            expeditionTitle,
+                            style: textTheme.titleMedium!.copyWith(
+                              fontSize: smallerThatDesktop ? 20.0 : 24.0,
+                            ),
+                          ),
+                          Spacer(),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 4.0),
+                            child: Container(
+                              width: 12.0,
+                              height: 12.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColors.mainSand,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            'Accepting Applications',
+                            style: textTheme.labelMedium,
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 18.0, bottom: 20.0),
+                        child: Text(
+                          description,
+                          style: textTheme.labelMedium!.copyWith(
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                date,
+                                style: textTheme.labelMedium!.copyWith(
+                                  color: AppColors.lightText,
+                                ),
+                              ),
+                              SizedBox(height: 4.0),
+                              Text(
+                                'Group Size: $groupSize Patrons',
+                                style: textTheme.labelMedium!.copyWith(
+                                  color: AppColors.lightText,
+                                ),
+                              ),
+                            ],
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.mainGreen,
+                            ),
+                            onPressed: () {},
+                            child: Text('Request Invitation'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

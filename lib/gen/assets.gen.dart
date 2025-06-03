@@ -31,6 +31,14 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/expedition_1.png
+  AssetGenImage get expedition1 =>
+      const AssetGenImage('assets/images/expedition_1.png');
+
+  /// File path: assets/images/expedition_2.png
+  AssetGenImage get expedition2 =>
+      const AssetGenImage('assets/images/expedition_2.png');
+
   /// File path: assets/images/img_1.png
   AssetGenImage get img1 => const AssetGenImage('assets/images/img_1.png');
 
@@ -55,6 +63,8 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    expedition1,
+    expedition2,
     img1,
     img2,
     img3,
