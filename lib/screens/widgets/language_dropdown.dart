@@ -48,7 +48,7 @@ class _LanguageDropdownState extends State<LanguageDropdown> {
           children: [
             Text(
               _selectedLang,
-              style: const TextStyle(
+              style:  Theme.of(context).textTheme.labelMedium!.copyWith(
                 fontSize: 16,
                 color: Colors.black,
               ),
