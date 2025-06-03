@@ -40,6 +40,8 @@ flutter:
     - family: Montserrat
       fonts:
         - asset: assets/fonts/Montserrat-Regular.ttf
+        - asset: assets/fonts/Montserrat-Light.ttf
+          weight: 300
     - family: Pacifico
       fonts:
         - asset: assets/fonts/Pacifico-Regular.ttf

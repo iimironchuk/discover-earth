@@ -31,12 +31,38 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/img_1.png
+  AssetGenImage get img1 => const AssetGenImage('assets/images/img_1.png');
+
+  /// File path: assets/images/img_2.png
+  AssetGenImage get img2 => const AssetGenImage('assets/images/img_2.png');
+
+  /// File path: assets/images/img_3.png
+  AssetGenImage get img3 => const AssetGenImage('assets/images/img_3.png');
+
+  /// File path: assets/images/img_4.png
+  AssetGenImage get img4 => const AssetGenImage('assets/images/img_4.png');
+
+  /// File path: assets/images/img_5.png
+  AssetGenImage get img5 => const AssetGenImage('assets/images/img_5.png');
+
+  /// File path: assets/images/img_6.png
+  AssetGenImage get img6 => const AssetGenImage('assets/images/img_6.png');
+
   /// File path: assets/images/main_image.png
   AssetGenImage get mainImage =>
       const AssetGenImage('assets/images/main_image.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [mainImage];
+  List<AssetGenImage> get values => [
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+    img6,
+    mainImage,
+  ];
 }
 
 class Assets {
