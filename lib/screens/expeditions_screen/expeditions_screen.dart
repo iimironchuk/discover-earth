@@ -1,5 +1,6 @@
 import 'package:discover_earth/gen/assets.gen.dart';
 import 'package:discover_earth/screens/expeditions_screen/widgets/expedition_tile.dart';
+import 'package:discover_earth/screens/expeditions_screen/widgets/upcoming_expedition_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -27,9 +28,31 @@ class ExpeditionsScreen extends StatelessWidget {
     ),
   ];
 
+  final upcomingExpeditions = [
+    UpcomingExpeditionTile(
+      title: 'Bhutanese Highlands',
+      date: 'October 2025',
+      description:
+          'Sacred monasteries and untouched mountain ecosystems in the world`s most carbon-negative country.',
+    ),
+    UpcomingExpeditionTile(
+      title: 'New Zealand Fiordlands',
+      date: 'November 2025',
+      description:
+          'Ancient rainforests and pristine fjords with Māori cultural immersion and conservation initiatives.',
+    ),
+    UpcomingExpeditionTile(
+      title: 'Madagascar Rainforests',
+      date: 'January 2026',
+      description:
+          'Encounter unique endemic species and support critical conservation efforts in biodiversity hotspots.',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final smallerThanDesktop = ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -39,7 +62,7 @@ class ExpeditionsScreen extends StatelessWidget {
             style: textTheme.titleMedium!.copyWith(
               fontWeight: FontWeight.w300,
               color: AppColors.mainGreen,
-              fontSize: 48.0,
+              fontSize: smallerThanDesktop ? 30.0 : 48.0,
             ),
           ),
           Padding(
@@ -49,7 +72,7 @@ class ExpeditionsScreen extends StatelessWidget {
               child: Text(
                 'Join our exclusive journeys to Earth`s most pristine and sacred locations, guided by renowned naturalists and indigenous wisdom keepers.',
                 style: textTheme.labelMedium!.copyWith(
-                  fontSize: 18.0,
+                  fontSize: smallerThanDesktop ? 16 : 18.0,
                   color: AppColors.mainText,
                   fontWeight: FontWeight.w400,
                 ),
@@ -59,7 +82,19 @@ class ExpeditionsScreen extends StatelessWidget {
               ),
             ),
           ),
-          Wrap(children: expeditionsList,),
+          Wrap(children: expeditionsList),
+          Padding(
+            padding: const EdgeInsets.only(top: 64.0, bottom: 32.0),
+            child: Text(
+              'Upcoming Expeditions',
+              style: textTheme.titleMedium!.copyWith(
+                fontWeight: FontWeight.w300,
+                color: AppColors.mainGreen,
+                fontSize: 24.0,
+              ),
+            ),
+          ),
+          Wrap(children: upcomingExpeditions,),
           SizedBox(height: 64),
         ],
       ),

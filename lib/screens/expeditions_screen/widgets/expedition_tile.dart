@@ -19,6 +19,8 @@ class ExpeditionTile extends StatelessWidget {
     required this.image,
   });
 
+
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;

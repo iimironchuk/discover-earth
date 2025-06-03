@@ -6,4 +6,5 @@ class AppColors {
   static Color mainSand = Color(0xFFC5A572);
   static Color mainText = Color(0xFF4B5563);
   static Color lightText = Color(0xFF6B7280);
+  static Color lightGrey = Color(0xFFF3F4F6);
 }

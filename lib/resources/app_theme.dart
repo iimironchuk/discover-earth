@@ -40,7 +40,6 @@ class AppTheme {
   );
 
   static ThemeData themeData = ThemeData(
-    useMaterial3: false,
     fontFamily: 'Montserrat',
     textTheme: TextTheme(
 
