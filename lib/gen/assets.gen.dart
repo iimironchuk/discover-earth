@@ -21,15 +21,26 @@ class $AssetsIconsGen {
   /// File path: assets/icons/profile.svg
   String get profile => 'assets/icons/profile.svg';
 
+  /// File path: assets/icons/ring.svg
+  String get ring => 'assets/icons/ring.svg';
+
   /// File path: assets/icons/search.svg
   String get search => 'assets/icons/search.svg';
 
   /// List of all assets
-  List<String> get values => [drawer, expandArrow, profile, search];
+  List<String> get values => [drawer, expandArrow, profile, ring, search];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/expedition_1.png
+  AssetGenImage get expedition1 =>
+      const AssetGenImage('assets/images/expedition_1.png');
+
+  /// File path: assets/images/expedition_2.png
+  AssetGenImage get expedition2 =>
+      const AssetGenImage('assets/images/expedition_2.png');
 
   /// File path: assets/images/img_1.png
   AssetGenImage get img1 => const AssetGenImage('assets/images/img_1.png');
@@ -55,6 +66,8 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    expedition1,
+    expedition2,
     img1,
     img2,
     img3,

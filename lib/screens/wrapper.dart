@@ -1,5 +1,6 @@
 import 'package:discover_earth/gen/assets.gen.dart';
 import 'package:discover_earth/resources/app_colors.dart';
+import 'package:discover_earth/screens/expeditions_screen/expeditions_screen.dart';
 import 'package:discover_earth/screens/gallery_screen/gallery_screen.dart';
 import 'package:discover_earth/screens/main_screen.dart';
 import 'package:discover_earth/screens/widgets/custom_drawer.dart';
@@ -73,7 +74,11 @@ class Wrapper extends StatelessWidget {
         ),
       ),
       drawer: CustomDrawer(),
-      body: SingleChildScrollView(child: Column(children: [MainScreen(), GalleryScreen()])),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [MainScreen(), GalleryScreen(), ExpeditionsScreen()],
+        ),
+      ),
     );
   }
 }
