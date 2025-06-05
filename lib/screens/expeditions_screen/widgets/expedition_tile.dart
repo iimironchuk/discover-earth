@@ -19,13 +19,92 @@ class ExpeditionTile extends StatelessWidget {
     required this.image,
   });
 
+  Widget _buildTitleContent(TextTheme textTheme, bool smallerThanDesktop) {
+    final children = <Widget>[
+      Text(
+        expeditionTitle,
+        style: textTheme.titleMedium!.copyWith(
+          fontSize: smallerThanDesktop ? 20.0 : 24.0,
+        ),
+      ),
+      !smallerThanDesktop ? Spacer() : SizedBox(),
+      Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 4.0),
+            child: Container(
+              width: 12.0,
+              height: 12.0,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.mainSand,
+              ),
+            ),
+          ),
+          Text(
+            'Accepting Applications',
+            style: textTheme.labelMedium,
+            softWrap: true,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
+    ];
 
+    return smallerThanDesktop
+        ? Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: children,
+        )
+        : Row(children: children);
+  }
+
+  Widget _buildAdditionalInfoContent(
+    TextTheme textTheme,
+    bool smallerThanDesktop,
+  ) {
+    final children = <Widget>[
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            date,
+            style: textTheme.labelMedium!.copyWith(color: AppColors.lightText),
+          ),
+          SizedBox(height: 4.0),
+          Text(
+            'Group Size: $groupSize Patrons',
+            style: textTheme.labelMedium!.copyWith(color: AppColors.lightText),
+          ),
+        ],
+      ),
+      !smallerThanDesktop ? Spacer() : SizedBox(),
+      Padding(
+        padding: EdgeInsets.only(top: smallerThanDesktop ? 8.0 : 0),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(backgroundColor: AppColors.mainGreen),
+          onPressed: () {},
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text('Request Invitation'),
+          ),
+        ),
+      ),
+    ];
+
+    return smallerThanDesktop
+        ? Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: children,
+        )
+        : Row(children: children);
+  }
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final double tileHeight = 570.0;
-    final smallerThatDesktop = ResponsiveBreakpoints.of(
+    final smallerThanDesktop = ResponsiveBreakpoints.of(
       context,
     ).smallerThan(DESKTOP);
     return Padding(
@@ -51,7 +130,10 @@ class ExpeditionTile extends StatelessWidget {
                   color: AppColors.mainSand,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 4.0,
+                    horizontal: 16.0,
+                  ),
                   child: Text(
                     'Limited Spaces',
                     style: textTheme.labelMedium!.copyWith(
@@ -79,33 +161,9 @@ class ExpeditionTile extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(32.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            expeditionTitle,
-                            style: textTheme.titleMedium!.copyWith(
-                              fontSize: smallerThatDesktop ? 20.0 : 24.0,
-                            ),
-                          ),
-                          Spacer(),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 4.0),
-                            child: Container(
-                              width: 12.0,
-                              height: 12.0,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColors.mainSand,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            'Accepting Applications',
-                            style: textTheme.labelMedium,
-                          ),
-                        ],
-                      ),
+                      _buildTitleContent(textTheme, smallerThanDesktop),
                       Padding(
                         padding: const EdgeInsets.only(top: 18.0, bottom: 20.0),
                         child: Text(
@@ -115,35 +173,9 @@ class ExpeditionTile extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                date,
-                                style: textTheme.labelMedium!.copyWith(
-                                  color: AppColors.lightText,
-                                ),
-                              ),
-                              SizedBox(height: 4.0),
-                              Text(
-                                'Group Size: $groupSize Patrons',
-                                style: textTheme.labelMedium!.copyWith(
-                                  color: AppColors.lightText,
-                                ),
-                              ),
-                            ],
-                          ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.mainGreen,
-                            ),
-                            onPressed: () {},
-                            child: Text('Request Invitation'),
-                          ),
-                        ],
+                      _buildAdditionalInfoContent(
+                        textTheme,
+                        smallerThanDesktop,
                       ),
                     ],
                   ),
