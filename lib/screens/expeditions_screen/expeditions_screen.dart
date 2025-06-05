@@ -54,49 +54,52 @@ class ExpeditionsScreen extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final smallerThanDesktop = ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          SizedBox(height: MediaQuery.of(context).size.height * 1 / 15),
-          Text(
-            'Invite-Only Eco-Expeditions',
-            style: textTheme.titleMedium!.copyWith(
-              fontWeight: FontWeight.w300,
-              color: AppColors.mainGreen,
-              fontSize: smallerThanDesktop ? 30.0 : 48.0,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16.0, bottom: 64.0),
-            child: SizedBox(
-              width: 600.0,
-              child: Text(
-                'Join our exclusive journeys to Earth`s most pristine and sacred locations, guided by renowned naturalists and indigenous wisdom keepers.',
-                style: textTheme.labelMedium!.copyWith(
-                  fontSize: smallerThanDesktop ? 16 : 18.0,
-                  color: AppColors.mainText,
-                  fontWeight: FontWeight.w400,
-                ),
-                textAlign: TextAlign.center,
-                softWrap: true,
-                overflow: TextOverflow.visible,
-              ),
-            ),
-          ),
-          Wrap(children: expeditionsList),
-          Padding(
-            padding: const EdgeInsets.only(top: 64.0, bottom: 32.0),
-            child: Text(
-              'Upcoming Expeditions',
+      child: Padding(
+        padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 1/8),
+        child: Column(
+          children: [
+            SizedBox(height: MediaQuery.of(context).size.height * 1 / 15),
+            Text(
+              'Invite-Only Eco-Expeditions',
               style: textTheme.titleMedium!.copyWith(
                 fontWeight: FontWeight.w300,
                 color: AppColors.mainGreen,
-                fontSize: 24.0,
+                fontSize: smallerThanDesktop ? 30.0 : 48.0,
               ),
             ),
-          ),
-          Wrap(children: upcomingExpeditions,),
-          SizedBox(height: 64),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0, bottom: 64.0),
+              child: SizedBox(
+                width: 600.0,
+                child: Text(
+                  'Join our exclusive journeys to Earth`s most pristine and sacred locations, guided by renowned naturalists and indigenous wisdom keepers.',
+                  style: textTheme.labelMedium!.copyWith(
+                    fontSize: smallerThanDesktop ? 16 : 18.0,
+                    color: AppColors.mainText,
+                    fontWeight: FontWeight.w400,
+                  ),
+                  textAlign: TextAlign.center,
+                  softWrap: true,
+                  overflow: TextOverflow.visible,
+                ),
+              ),
+            ),
+            Wrap(children: expeditionsList),
+            Padding(
+              padding: const EdgeInsets.only(top: 64.0, bottom: 32.0),
+              child: Text(
+                'Upcoming Expeditions',
+                style: textTheme.titleMedium!.copyWith(
+                  fontWeight: FontWeight.w300,
+                  color: AppColors.mainGreen,
+                  fontSize: 24.0,
+                ),
+              ),
+            ),
+            Wrap(children: upcomingExpeditions,),
+            SizedBox(height: 64),
+          ],
+        ),
       ),
     );
   }
