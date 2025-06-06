@@ -17,10 +17,11 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = ResponsiveBreakpoints.of(context).isTablet;
+    final isMobile = ResponsiveBreakpoints.of(context).isMobile;
     final smallerThanDesktop = ResponsiveBreakpoints.of(
       context,
     ).smallerThan(DESKTOP);
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(68.0),
@@ -30,7 +31,7 @@ class Wrapper extends StatelessWidget {
           title: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              smallerThanDesktop
+               MediaQuery.of(context).size.width < 1100
                   ? Builder(
                     builder:
                         (context) => IconButton(
@@ -45,7 +46,9 @@ class Wrapper extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 32.0, right: 47.0),
                 child: Text(
                   'Eden Reverie',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    fontSize: isMobile ? 20.0 : 30.0
+                  ),
                 ),
               ),
               if (!smallerThanDesktop &&
@@ -62,7 +65,7 @@ class Wrapper extends StatelessWidget {
                   separatorBuilder: (context, index) => SizedBox(width: 32.0),
                 ),
               Spacer(),
-              SeparatedRow(
+              if(!isMobile) SeparatedRow(
                 children: [
                   SvgPicture.asset(Assets.icons.search),
                   SvgPicture.asset(Assets.icons.profile),
