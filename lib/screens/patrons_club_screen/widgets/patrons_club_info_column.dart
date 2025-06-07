@@ -1,5 +1,6 @@
 import 'package:discover_earth/screens/patrons_club_screen/widgets/patrons_club_list_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../resources/app_colors.dart';
 
@@ -9,6 +10,9 @@ class PatronsClubInfoColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final smallerThanLaptop = ResponsiveBreakpoints.of(
+      context,
+    ).smallerThan('Laptop');
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -18,7 +22,7 @@ class PatronsClubInfoColumn extends StatelessWidget {
           style: textTheme.titleMedium!.copyWith(
             fontWeight: FontWeight.w300,
             color: AppColors.mainGreen,
-            fontSize: 48.0,
+            fontSize: smallerThanLaptop ? 32.0 : 48.0,
           ),
         ),
         Padding(
@@ -26,7 +30,7 @@ class PatronsClubInfoColumn extends StatelessWidget {
           child: Text(
             'An exclusive circle of visionaries committed to preserving Earth`s most sacred natural spaces through strategic philanthropy and conscious stewardship.',
             style: textTheme.labelMedium!.copyWith(
-              fontSize: 18.0,
+              fontSize: smallerThanLaptop ? 14.0 : 18.0,
               color: AppColors.mainText,
               fontWeight: FontWeight.w400,
             ),

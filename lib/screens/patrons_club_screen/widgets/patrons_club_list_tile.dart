@@ -2,6 +2,7 @@ import 'package:discover_earth/gen/assets.gen.dart';
 import 'package:discover_earth/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class PatronsClubListTile extends StatelessWidget {
   final String title;
@@ -16,6 +17,9 @@ class PatronsClubListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final smallerThanLaptop = ResponsiveBreakpoints.of(
+      context,
+    ).smallerThan('Laptop');
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -44,14 +48,16 @@ class PatronsClubListTile extends StatelessWidget {
               Text(
                 title,
                 style: textTheme.titleMedium!.copyWith(
-                  fontSize: 20.0,
+                  fontSize: smallerThanLaptop ? 16.0 : 20.0,
                   color: Color(0xFF111827),
                 ),
               ),
-              SizedBox(height: 10.0,),
+              SizedBox(height: 10.0),
               Text(
                 subtitle,
-                style: textTheme.labelMedium!.copyWith(fontSize: 16.0),
+                style: textTheme.labelMedium!.copyWith(
+                  fontSize: smallerThanLaptop ? 12.0 : 16.0,
+                ),
                 softWrap: true,
                 overflow: TextOverflow.visible,
               ),

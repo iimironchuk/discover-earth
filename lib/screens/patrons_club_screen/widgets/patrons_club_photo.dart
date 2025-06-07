@@ -16,7 +16,11 @@ class PatronsClubPhoto extends StatelessWidget {
     const imageHeight = 520.0;
 
     final scaleFactor = (screenWidth / maxWidth).clamp(0.7, 1.0);
-    final smallerThanDesktop = ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
+    final smallerThanDesktop = ResponsiveBreakpoints.of(
+      context,
+    ).smallerThan(DESKTOP);
+
+    final isMobile = ResponsiveBreakpoints.of(context).isMobile;
 
     return Center(
       child: AspectRatio(
@@ -24,14 +28,12 @@ class PatronsClubPhoto extends StatelessWidget {
         child: Stack(
           children: [
             Positioned.fill(
-              child: Assets.images.patronsClub.image(
-                fit: BoxFit.cover,
-              ),
+              child: Assets.images.patronsClub.image(fit: BoxFit.cover),
             ),
             Align(
               alignment: Alignment.bottomRight,
               child: FractionallySizedBox(
-                widthFactor: 0.5,
+                widthFactor: isMobile ? 0.7 : 0.5,
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16 * scaleFactor),
@@ -60,25 +62,33 @@ class PatronsClubPhoto extends StatelessWidget {
                               ),
                             ),
                             SizedBox(width: 12.0 * scaleFactor),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Dr. Eleanor Harrington',
-                                  style: textTheme.titleMedium?.copyWith(
-                                    fontSize: smallerThanDesktop ? 14 : 18.0,
-
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Dr. Eleanor Harrington',
+                                    style: textTheme.titleMedium?.copyWith(
+                                      fontSize: 18.0 * scaleFactor,
+                                      // smallerThanDesktop
+                                      //     ? 14
+                                      //     : isMobile
+                                      //     ? 10.0
+                                      //     : 18.0,
+                                    ),
+                                    softWrap: true,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                  softWrap: true,
-                                  overflow: TextOverflow.visible,
-                                ),
-                                Text(
-                                  'Founding Patron',
-                                  style: textTheme.labelMedium,
-                                  softWrap: true,
-                                  overflow: TextOverflow.visible,
-                                ),
-                              ],
+                                  Text(
+                                    'Founding Patron',
+                                    style: textTheme.labelMedium!.copyWith(
+                                      fontSize: 14.0 * scaleFactor,
+                                    ),
+                                    softWrap: true,
+                                    overflow: TextOverflow.visible,
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -87,6 +97,7 @@ class PatronsClubPhoto extends StatelessWidget {
                           '"Our collective commitment to these sacred spaces creates a legacy that will endure for generations. This is philanthropy with profound purpose."',
                           style: textTheme.labelMedium?.copyWith(
                             fontStyle: FontStyle.italic,
+                            fontSize: 14.0 * scaleFactor,
                           ),
                           softWrap: true,
                           overflow: TextOverflow.visible,
