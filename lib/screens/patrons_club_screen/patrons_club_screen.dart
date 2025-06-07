@@ -1,6 +1,5 @@
 import 'package:discover_earth/screens/patrons_club_screen/widgets/patrons_club_info_column.dart';
 import 'package:discover_earth/screens/patrons_club_screen/widgets/patrons_club_photo.dart';
-import 'package:discover_earth/screens/patrons_club_screen/widgets/patrons_club_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
