@@ -33,7 +33,7 @@ class GalleryScreen extends StatelessWidget {
               style: textTheme.titleMedium!.copyWith(
                 fontWeight: FontWeight.w300,
                 color: AppColors.mainGreen,
-                fontSize: 48.0,
+                fontSize: smallerThatDesktop ? 34.0 : 48.0,
               ),
             ),
             Padding(
@@ -43,7 +43,7 @@ class GalleryScreen extends StatelessWidget {
                 child: Text(
                   'Immerse yourself in Earth`s most breathtaking landscapes through full-screen films and 3D audio experiences.',
                   style: textTheme.labelMedium!.copyWith(
-                    fontSize: 18.0,
+                    fontSize: smallerThatDesktop ? 14.0 : 18.0,
                     color: AppColors.mainText,
                     fontWeight: FontWeight.w400,
                   ),

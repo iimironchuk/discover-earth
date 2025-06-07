@@ -25,7 +25,7 @@ class MainScreen extends StatelessWidget {
           child: Text('Begin Your Journey'),
         ),
       ),
-      SizedBox(width: 24.0, height: 24.0,),
+      SizedBox(width: 24.0, height: 24.0),
       Row(
         children: [
           Switch(
@@ -79,53 +79,55 @@ class MainScreen extends StatelessWidget {
               left: MediaQuery.of(context).size.width * 1 / 8,
               top: MediaQuery.of(context).size.height * 1 / 15,
             ),
-            child: FractionallySizedBox(
-              alignment: Alignment.centerLeft,
-              widthFactor: 0.7,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Discover Earth`s Most\nSacred Sanctuaries',
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      fontSize:
-                          !isMobile
-                              ? isTablet
-                                  ? 48.0
-                                  : 72.0
-                              : 26.0,
-                      color: AppColors.scaffold,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: 26.0,
-                      bottom: 42.0,
-                      right: MediaQuery.of(context).size.width * 1 / 8,
-                    ),
-                    child: SizedBox(
-                      width: 500.0,
-                      child: Text(
-                        'An immersive journey into the world`s most untouched natural wonders, curated for those who seek the extraordinary.',
-                        style: Theme.of(
-                          context,
-                        ).textTheme.labelMedium!.copyWith(
-                          fontSize:
-                              !isTablet
-                                  ? isMobile
-                                      ? 12.0
-                                      : 20
-                                  : 16.0,
-                          fontWeight: FontWeight.w300,
-                          color: AppColors.scaffold,
-                        ),
-                        softWrap: true,
-                        overflow: TextOverflow.visible,
+            child: SingleChildScrollView(
+              child: FractionallySizedBox(
+                alignment: Alignment.centerLeft,
+                widthFactor: 0.7,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Discover Earth`s Most\nSacred Sanctuaries',
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        fontSize:
+                            !smallerThanDesktop
+                                ? isMobile
+                                ? 30.0
+                                : 72.0
+                                : 48.0,
+                        color: AppColors.scaffold,
                       ),
                     ),
-                  ),
-                  _buildInteractiveContent(textTheme, smallerThanDesktop),
-                ],
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 26.0,
+                        bottom: 42.0,
+                        right: MediaQuery.of(context).size.width * 1 / 8,
+                      ),
+                      child: SizedBox(
+                        width: 500.0,
+                        child: Text(
+                          'An immersive journey into the world`s most untouched natural wonders, curated for those who seek the extraordinary.',
+                          style: Theme.of(
+                            context,
+                          ).textTheme.labelMedium!.copyWith(
+                            fontSize:
+                                !isTablet
+                                    ? isMobile
+                                        ? 15.0
+                                        : 20
+                                    : 18.0,
+                            fontWeight: FontWeight.w300,
+                            color: AppColors.scaffold,
+                          ),
+                          softWrap: true,
+                          overflow: TextOverflow.visible,
+                        ),
+                      ),
+                    ),
+                    _buildInteractiveContent(textTheme, smallerThanDesktop),
+                  ],
+                ),
               ),
             ),
           ),

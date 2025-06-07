@@ -52,10 +52,18 @@ class ExpeditionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final smallerThanDesktop = ResponsiveBreakpoints.of(context).smallerThan(DESKTOP);
+    final smallerThanDesktop = ResponsiveBreakpoints.of(
+      context,
+    ).smallerThan(DESKTOP);
+    final smallerThanLaptop = ResponsiveBreakpoints.of(
+      context,
+    ).smallerThan('Laptop');
+    final isMobile = ResponsiveBreakpoints.of(context).isMobile;
     return SingleChildScrollView(
       child: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 1/8),
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 1 / 8,
+        ),
         child: Column(
           children: [
             SizedBox(height: MediaQuery.of(context).size.height * 1 / 15),
@@ -64,7 +72,12 @@ class ExpeditionsScreen extends StatelessWidget {
               style: textTheme.titleMedium!.copyWith(
                 fontWeight: FontWeight.w300,
                 color: AppColors.mainGreen,
-                fontSize: smallerThanDesktop ? 30.0 : 48.0,
+                fontSize:
+                    !smallerThanDesktop
+                        ? isMobile
+                        ? 20.0
+                        : 48.0
+                        : 30.0,
               ),
             ),
             Padding(
@@ -74,7 +87,7 @@ class ExpeditionsScreen extends StatelessWidget {
                 child: Text(
                   'Join our exclusive journeys to Earth`s most pristine and sacred locations, guided by renowned naturalists and indigenous wisdom keepers.',
                   style: textTheme.labelMedium!.copyWith(
-                    fontSize: smallerThanDesktop ? 16 : 18.0,
+                    fontSize: smallerThanDesktop ? 16.0 : isMobile ? 12.0 : 18.0,
                     color: AppColors.mainText,
                     fontWeight: FontWeight.w400,
                   ),
@@ -84,7 +97,21 @@ class ExpeditionsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Wrap(children: expeditionsList),
+            // Wrap(children: expeditionsList),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: smallerThanLaptop ? 1 : 2,
+                mainAxisSpacing: 24.0,
+                crossAxisSpacing: 24.0,
+                childAspectRatio: 716.0 / 572.0,
+              ),
+              itemCount: expeditionsList.length,
+              itemBuilder: (context, index) {
+                return expeditionsList[index];
+              },
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 64.0, bottom: 32.0),
               child: Text(
@@ -96,7 +123,7 @@ class ExpeditionsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Wrap(children: upcomingExpeditions,),
+            Wrap(children: upcomingExpeditions),
             SizedBox(height: 64),
           ],
         ),
