@@ -87,6 +87,30 @@ class $AssetsImagesGen {
   /// File path: assets/images/img_6.png
   AssetGenImage get img6 => const AssetGenImage('assets/images/img_6.png');
 
+  /// File path: assets/images/journal1.png
+  AssetGenImage get journal1 =>
+      const AssetGenImage('assets/images/journal1.png');
+
+  /// File path: assets/images/journal2.png
+  AssetGenImage get journal2 =>
+      const AssetGenImage('assets/images/journal2.png');
+
+  /// File path: assets/images/journal3.png
+  AssetGenImage get journal3 =>
+      const AssetGenImage('assets/images/journal3.png');
+
+  /// File path: assets/images/journal_author1.png
+  AssetGenImage get journalAuthor1 =>
+      const AssetGenImage('assets/images/journal_author1.png');
+
+  /// File path: assets/images/journal_author2.png
+  AssetGenImage get journalAuthor2 =>
+      const AssetGenImage('assets/images/journal_author2.png');
+
+  /// File path: assets/images/journal_author3.png
+  AssetGenImage get journalAuthor3 =>
+      const AssetGenImage('assets/images/journal_author3.png');
+
   /// File path: assets/images/main_image.png
   AssetGenImage get mainImage =>
       const AssetGenImage('assets/images/main_image.png');
@@ -133,6 +157,12 @@ class $AssetsImagesGen {
     img4,
     img5,
     img6,
+    journal1,
+    journal2,
+    journal3,
+    journalAuthor1,
+    journalAuthor2,
+    journalAuthor3,
     mainImage,
     natureArt1,
     natureArt2,
