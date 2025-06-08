@@ -100,7 +100,7 @@ class PatronsClubPhoto extends StatelessWidget {
                             fontSize: 14.0 * scaleFactor,
                           ),
                           softWrap: true,
-                          overflow: TextOverflow.visible,
+                          overflow: isMobile ? TextOverflow.ellipsis : TextOverflow.visible,
                         ),
                       ],
                     ),

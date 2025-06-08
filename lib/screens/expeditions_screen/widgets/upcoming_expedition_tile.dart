@@ -39,23 +39,27 @@ class UpcomingExpeditionTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: textTheme.titleMedium!.copyWith(
-                          fontSize: smallerThanDesktop ? 15.0 : 20.0,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: textTheme.titleMedium!.copyWith(
+                            fontSize: smallerThanDesktop ? 15.0 : 20.0,
+                          ),
+                          softWrap: true,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                      ),
-                      Text(
-                        date,
-                        style: textTheme.labelMedium!.copyWith(
-                          color: AppColors.lightText,
-                          fontSize: smallerThanDesktop ? 10.0 : 14.0,
+                        Text(
+                          date,
+                          style: textTheme.labelMedium!.copyWith(
+                            color: AppColors.lightText,
+                            fontSize: smallerThanDesktop ? 10.0 : 14.0,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   Container(
                     width: smallerThanDesktop ? 20.0 : 40.0,
