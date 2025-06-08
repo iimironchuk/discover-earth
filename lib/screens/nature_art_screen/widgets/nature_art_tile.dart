@@ -28,26 +28,6 @@ class NatureArtTile extends StatelessWidget {
     required this.authorName,
   });
 
-  Widget _buildTitleContent(TextTheme textTheme, bool smallerThanDesktop) {
-    final children = <Widget>[
-      Text(
-        title,
-        style: textTheme.titleMedium!.copyWith(
-          fontSize: smallerThanDesktop ? 14.0 : 20.0,
-        ),
-      ),
-      !smallerThanDesktop ? Spacer() : SizedBox(),
-      Row(children: [Circle(), SizedBox(width: 8.0), Circle()]),
-    ];
-
-    return smallerThanDesktop
-        ? Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: children,
-        )
-        : Row(children: children);
-  }
-
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
