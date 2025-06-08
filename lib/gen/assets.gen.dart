@@ -115,6 +115,9 @@ class $AssetsImagesGen {
   AssetGenImage get mainImage =>
       const AssetGenImage('assets/images/main_image.png');
 
+  /// File path: assets/images/map.png
+  AssetGenImage get map => const AssetGenImage('assets/images/map.png');
+
   /// File path: assets/images/nature_art1.png
   AssetGenImage get natureArt1 =>
       const AssetGenImage('assets/images/nature_art1.png');
@@ -164,6 +167,7 @@ class $AssetsImagesGen {
     journalAuthor2,
     journalAuthor3,
     mainImage,
+    map,
     natureArt1,
     natureArt2,
     natureArt3,
