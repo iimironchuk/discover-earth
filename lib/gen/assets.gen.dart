@@ -12,6 +12,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/circle.svg
+  String get circle => 'assets/icons/circle.svg';
+
   /// File path: assets/icons/drawer.svg
   String get drawer => 'assets/icons/drawer.svg';
 
@@ -31,11 +34,28 @@ class $AssetsIconsGen {
   String get tick => 'assets/icons/tick.svg';
 
   /// List of all assets
-  List<String> get values => [drawer, expandArrow, profile, ring, search, tick];
+  List<String> get values => [
+    circle,
+    drawer,
+    expandArrow,
+    profile,
+    ring,
+    search,
+    tick,
+  ];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/author1.png
+  AssetGenImage get author1 => const AssetGenImage('assets/images/author1.png');
+
+  /// File path: assets/images/author2.png
+  AssetGenImage get author2 => const AssetGenImage('assets/images/author2.png');
+
+  /// File path: assets/images/author3.png
+  AssetGenImage get author3 => const AssetGenImage('assets/images/author3.png');
 
   /// File path: assets/images/dr_image.png
   AssetGenImage get drImage =>
@@ -71,12 +91,39 @@ class $AssetsImagesGen {
   AssetGenImage get mainImage =>
       const AssetGenImage('assets/images/main_image.png');
 
+  /// File path: assets/images/nature_art1.png
+  AssetGenImage get natureArt1 =>
+      const AssetGenImage('assets/images/nature_art1.png');
+
+  /// File path: assets/images/nature_art2.png
+  AssetGenImage get natureArt2 =>
+      const AssetGenImage('assets/images/nature_art2.png');
+
+  /// File path: assets/images/nature_art3.png
+  AssetGenImage get natureArt3 =>
+      const AssetGenImage('assets/images/nature_art3.png');
+
   /// File path: assets/images/patrons_club.png
   AssetGenImage get patronsClub =>
       const AssetGenImage('assets/images/patrons_club.png');
 
+  /// File path: assets/images/reverie_journal1.png
+  AssetGenImage get reverieJournal1 =>
+      const AssetGenImage('assets/images/reverie_journal1.png');
+
+  /// File path: assets/images/reverie_journal2.png
+  AssetGenImage get reverieJournal2 =>
+      const AssetGenImage('assets/images/reverie_journal2.png');
+
+  /// File path: assets/images/reverie_journal3.png
+  AssetGenImage get reverieJournal3 =>
+      const AssetGenImage('assets/images/reverie_journal3.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
+    author1,
+    author2,
+    author3,
     drImage,
     expedition1,
     expedition2,
@@ -87,7 +134,13 @@ class $AssetsImagesGen {
     img5,
     img6,
     mainImage,
+    natureArt1,
+    natureArt2,
+    natureArt3,
     patronsClub,
+    reverieJournal1,
+    reverieJournal2,
+    reverieJournal3,
   ];
 }
 

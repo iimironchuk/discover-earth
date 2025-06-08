@@ -60,72 +60,75 @@ class ExpeditionsScreen extends StatelessWidget {
     ).smallerThan('Laptop');
     final isMobile = ResponsiveBreakpoints.of(context).isMobile;
     return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * 1 / 8,
-        ),
-        child: Column(
-          children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 1 / 15),
-            Text(
-              'Invite-Only Eco-Expeditions',
-              style: textTheme.titleMedium!.copyWith(
-                fontWeight: FontWeight.w300,
-                color: AppColors.mainGreen,
-                fontSize:
-                    !smallerThanDesktop
-                        ? isMobile
-                        ? 20.0
-                        : 48.0
-                        : 30.0,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0, bottom: 64.0),
-              child: SizedBox(
-                width: 600.0,
-                child: Text(
-                  'Join our exclusive journeys to Earth`s most pristine and sacred locations, guided by renowned naturalists and indigenous wisdom keepers.',
-                  style: textTheme.labelMedium!.copyWith(
-                    fontSize: smallerThanDesktop ? 16.0 : isMobile ? 12.0 : 18.0,
-                    color: AppColors.mainText,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  textAlign: TextAlign.center,
-                  softWrap: true,
-                  overflow: TextOverflow.visible,
-                ),
-              ),
-            ),
-            // Wrap(children: expeditionsList),
-            GridView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: smallerThanLaptop ? 1 : 2,
-                mainAxisSpacing: 24.0,
-                crossAxisSpacing: 24.0,
-                childAspectRatio: 716.0 / 572.0,
-              ),
-              itemCount: expeditionsList.length,
-              itemBuilder: (context, index) {
-                return expeditionsList[index];
-              },
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 64.0, bottom: 32.0),
-              child: Text(
-                'Upcoming Expeditions',
+      child: Container(
+        color: AppColors.backgroundGray,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 1 / 8,
+          ),
+          child: Column(
+            children: [
+              SizedBox(height: MediaQuery.of(context).size.height * 1 / 15),
+              Text(
+                'Invite-Only Eco-Expeditions',
                 style: textTheme.titleMedium!.copyWith(
                   fontWeight: FontWeight.w300,
                   color: AppColors.mainGreen,
-                  fontSize: 24.0,
+                  fontSize:
+                      !smallerThanDesktop
+                          ? isMobile
+                          ? 20.0
+                          : 48.0
+                          : 30.0,
                 ),
               ),
-            ),
-            Wrap(children: upcomingExpeditions),
-            SizedBox(height: 64),
-          ],
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0, bottom: 64.0),
+                child: SizedBox(
+                  width: 600.0,
+                  child: Text(
+                    'Join our exclusive journeys to Earth`s most pristine and sacred locations, guided by renowned naturalists and indigenous wisdom keepers.',
+                    style: textTheme.labelMedium!.copyWith(
+                      fontSize: smallerThanDesktop ? 16.0 : isMobile ? 12.0 : 18.0,
+                      color: AppColors.mainText,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    textAlign: TextAlign.center,
+                    softWrap: true,
+                    overflow: TextOverflow.visible,
+                  ),
+                ),
+              ),
+              // Wrap(children: expeditionsList),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: smallerThanLaptop ? 1 : 2,
+                  mainAxisSpacing: 24.0,
+                  crossAxisSpacing: 24.0,
+                  childAspectRatio: 716.0 / 572.0,
+                ),
+                itemCount: expeditionsList.length,
+                itemBuilder: (context, index) {
+                  return expeditionsList[index];
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 64.0, bottom: 32.0),
+                child: Text(
+                  'Upcoming Expeditions',
+                  style: textTheme.titleMedium!.copyWith(
+                    fontWeight: FontWeight.w300,
+                    color: AppColors.mainGreen,
+                    fontSize: 24.0,
+                  ),
+                ),
+              ),
+              Wrap(children: upcomingExpeditions),
+              SizedBox(height: 64),
+            ],
+          ),
         ),
       ),
     );

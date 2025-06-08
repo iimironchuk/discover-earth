@@ -3,6 +3,7 @@ import 'package:discover_earth/resources/app_colors.dart';
 import 'package:discover_earth/screens/expeditions_screen/expeditions_screen.dart';
 import 'package:discover_earth/screens/gallery_screen/gallery_screen.dart';
 import 'package:discover_earth/screens/main_screen.dart';
+import 'package:discover_earth/screens/nature_art_screen/nature_art_screen.dart';
 import 'package:discover_earth/screens/patrons_club_screen/patrons_club_screen.dart';
 import 'package:discover_earth/screens/widgets/custom_drawer.dart';
 import 'package:discover_earth/screens/widgets/header_label.dart';
@@ -85,6 +86,7 @@ class Wrapper extends StatelessWidget {
             GalleryScreen(),
             ExpeditionsScreen(),
             PatronsClubScreen(),
+            NatureArtScreen()
           ],
         ),
       ),
