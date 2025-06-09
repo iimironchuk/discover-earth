@@ -1,5 +1,6 @@
 import 'package:discover_earth/gen/assets.gen.dart';
 import 'package:discover_earth/resources/app_colors.dart';
+import 'package:discover_earth/screens/community_screen/community_screen.dart';
 import 'package:discover_earth/screens/conversation_screen/conversation_screen.dart';
 import 'package:discover_earth/screens/expeditions_screen/expeditions_screen.dart';
 import 'package:discover_earth/screens/gallery_screen/gallery_screen.dart';
@@ -92,7 +93,8 @@ class Wrapper extends StatelessWidget {
             NatureArtScreen(),
             JournalScreen(),
             MapScreen(),
-            ConversationScreen()
+            ConversationScreen(),
+            CommunityScreen(),
           ],
         ),
       ),
