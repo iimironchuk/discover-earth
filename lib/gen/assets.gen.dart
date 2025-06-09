@@ -15,11 +15,26 @@ class $AssetsIconsGen {
   /// File path: assets/icons/circle.svg
   String get circle => 'assets/icons/circle.svg';
 
+  /// File path: assets/icons/conversation_item.svg
+  String get conversationItem => 'assets/icons/conversation_item.svg';
+
+  /// File path: assets/icons/diagram.svg
+  String get diagram => 'assets/icons/diagram.svg';
+
   /// File path: assets/icons/drawer.svg
   String get drawer => 'assets/icons/drawer.svg';
 
+  /// File path: assets/icons/drop.svg
+  String get drop => 'assets/icons/drop.svg';
+
   /// File path: assets/icons/expand_arrow.svg
   String get expandArrow => 'assets/icons/expand_arrow.svg';
+
+  /// File path: assets/icons/nature.svg
+  String get nature => 'assets/icons/nature.svg';
+
+  /// File path: assets/icons/patrons.svg
+  String get patrons => 'assets/icons/patrons.svg';
 
   /// File path: assets/icons/profile.svg
   String get profile => 'assets/icons/profile.svg';
@@ -36,8 +51,13 @@ class $AssetsIconsGen {
   /// List of all assets
   List<String> get values => [
     circle,
+    conversationItem,
+    diagram,
     drawer,
+    drop,
     expandArrow,
+    nature,
+    patrons,
     profile,
     ring,
     search,

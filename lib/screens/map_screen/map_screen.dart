@@ -52,7 +52,19 @@ class MapScreen extends StatelessWidget {
                   ),
                 ),
               ),
-             isMobile ? MapWithPropertiesRow() : MapWithProperties(),
+              isMobile ? MapWithPropertiesRow() : MapWithProperties(),
+              Padding(
+                padding: const EdgeInsets.only(top: 48.0),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text('Request Retreat Catalog'),
+                ),
+              ),
             ],
           ),
         ),
