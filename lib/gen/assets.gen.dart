@@ -12,6 +12,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/apple.svg
+  String get apple => 'assets/icons/apple.svg';
+
   /// File path: assets/icons/circle.svg
   String get circle => 'assets/icons/circle.svg';
 
@@ -30,11 +33,23 @@ class $AssetsIconsGen {
   /// File path: assets/icons/expand_arrow.svg
   String get expandArrow => 'assets/icons/expand_arrow.svg';
 
+  /// File path: assets/icons/instagram.svg
+  String get instagram => 'assets/icons/instagram.svg';
+
+  /// File path: assets/icons/linkedin.svg
+  String get linkedin => 'assets/icons/linkedin.svg';
+
+  /// File path: assets/icons/mastercard.svg
+  String get mastercard => 'assets/icons/mastercard.svg';
+
   /// File path: assets/icons/nature.svg
   String get nature => 'assets/icons/nature.svg';
 
   /// File path: assets/icons/patrons.svg
   String get patrons => 'assets/icons/patrons.svg';
+
+  /// File path: assets/icons/paypal.svg
+  String get paypal => 'assets/icons/paypal.svg';
 
   /// File path: assets/icons/profile.svg
   String get profile => 'assets/icons/profile.svg';
@@ -48,20 +63,37 @@ class $AssetsIconsGen {
   /// File path: assets/icons/tick.svg
   String get tick => 'assets/icons/tick.svg';
 
+  /// File path: assets/icons/visa.svg
+  String get visa => 'assets/icons/visa.svg';
+
+  /// File path: assets/icons/x.svg
+  String get x => 'assets/icons/x.svg';
+
+  /// File path: assets/icons/youtube.svg
+  String get youtube => 'assets/icons/youtube.svg';
+
   /// List of all assets
   List<String> get values => [
+    apple,
     circle,
     conversationItem,
     diagram,
     drawer,
     drop,
     expandArrow,
+    instagram,
+    linkedin,
+    mastercard,
     nature,
     patrons,
+    paypal,
     profile,
     ring,
     search,
     tick,
+    visa,
+    x,
+    youtube,
   ];
 }
 

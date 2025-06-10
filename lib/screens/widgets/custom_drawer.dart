@@ -8,7 +8,20 @@ import '../../gen/assets.gen.dart';
 import 'language_dropdown.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+  final VoidCallback onScrollToGallery;
+  final VoidCallback onScrollToExpeditions;
+  final VoidCallback onScrollToNaturePatrons;
+  final VoidCallback onScrollToArtVault;
+  final VoidCallback onScrollToJournal;
+
+  const CustomDrawer({
+    super.key,
+    required this.onScrollToGallery,
+    required this.onScrollToExpeditions,
+    required this.onScrollToNaturePatrons,
+    required this.onScrollToArtVault,
+    required this.onScrollToJournal,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,45 +30,37 @@ class CustomDrawer extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(color: AppColors.scaffold),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextButton(
-                onPressed: () {},
-                child: HeaderLabel(title: 'Living Gallery'),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: HeaderLabel(title: 'Expeditions'),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: HeaderLabel(title: 'Nature Patrons'),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: HeaderLabel(title: 'Art Vault'),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: HeaderLabel(title: 'Journal'),
-              ),
-              if(isMobile) Column(
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(Assets.icons.search),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(Assets.icons.profile),
-                  ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 30.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                HeaderLabel(title: 'Living Gallery', onTap: onScrollToGallery),
+                HeaderLabel(title: 'Expeditions', onTap: onScrollToExpeditions),
+                HeaderLabel(
+                  title: 'Nature Patrons',
+                  onTap: onScrollToNaturePatrons,
+                ),
+                HeaderLabel(title: 'Art Vault', onTap: onScrollToArtVault),
+                HeaderLabel(title: 'Journal', onTap: onScrollToJournal),
+                if (isMobile)
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset(Assets.icons.search),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset(Assets.icons.profile),
+                      ),
 
-                  LanguageDropdown(),
-                ],
-              ),
-            ],
+                      LanguageDropdown(),
+                    ],
+                  ),
+              ],
+            ),
           ),
         ),
       ),

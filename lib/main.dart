@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             child: child!,
           ),
       theme: AppTheme.themeData,
-      home: const Wrapper(),
+      home: Wrapper(),
     );
   }
 }
