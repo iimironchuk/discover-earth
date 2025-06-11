@@ -22,45 +22,47 @@ class GalleryScreen extends StatelessWidget {
     final smallerThatDesktop = ResponsiveBreakpoints.of(
       context,
     ).smallerThan(DESKTOP);
-    return SingleChildScrollView(
+    return Container(
+      color: AppColors.scaffold,
+      width: double.infinity,
       child: Container(
+        alignment: Alignment.center,
         color: AppColors.scaffold,
-        child: Column(
-          children: [
-            SizedBox(height: MediaQuery.of(context).size.height * 1 / 15),
-            Text(
-              'Living Gallery',
-              style: textTheme.titleMedium!.copyWith(
-                fontWeight: FontWeight.w300,
-                color: AppColors.mainGreen,
-                fontSize: smallerThatDesktop ? 34.0 : 48.0,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0, bottom: 64.0),
-              child: SizedBox(
-                width: 600.0,
-                child: Text(
-                  'Immerse yourself in Earth`s most breathtaking landscapes through full-screen films and 3D audio experiences.',
-                  style: textTheme.labelMedium!.copyWith(
-                    fontSize: smallerThatDesktop ? 14.0 : 18.0,
-                    color: AppColors.mainText,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  textAlign: TextAlign.center,
-                  softWrap: true,
-                  overflow: TextOverflow.visible,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 1536.0),
+          child: Column(
+            // mainAxisSize: MainAxisSize.min,
+            children: [
+              // SizedBox(height: MediaQuery.of(context).size.height * 1 / 15),
+              Text(
+                'Living Gallery',
+                style: textTheme.titleMedium!.copyWith(
+                  fontWeight: FontWeight.w300,
+                  color: AppColors.mainGreen,
+                  fontSize: smallerThatDesktop ? 34.0 : 48.0,
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 1 / 8,
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0, bottom: 64.0),
+                child: SizedBox(
+                  width: 600.0,
+                  child: Text(
+                    'Immerse yourself in Earth`s most breathtaking landscapes through full-screen films and 3D audio experiences.',
+                    style: textTheme.labelMedium!.copyWith(
+                      fontSize: smallerThatDesktop ? 14.0 : 18.0,
+                      color: AppColors.mainText,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    textAlign: TextAlign.center,
+                    softWrap: true,
+                    overflow: TextOverflow.visible,
+                  ),
+                ),
               ),
-              child: GridView.builder(
+              GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: smallerThatDesktop ? 1 : 3,
+                  crossAxisCount: smallerThatDesktop ? 2 : 3,
                   mainAxisSpacing: 24.0,
                   crossAxisSpacing: 24.0,
                   childAspectRatio: 474.0 / 384.0,
@@ -75,13 +77,13 @@ class GalleryScreen extends StatelessWidget {
                   );
                 },
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 48.0),
-              child: CustomOutlinedButton(),
-            ),
-            SizedBox(height: MediaQuery.of(context).size.height * 1 / 15),
-          ],
+              Padding(
+                padding: const EdgeInsets.only(top: 48.0),
+                child: CustomOutlinedButton(),
+              ),
+              // SizedBox(height: MediaQuery.of(context).size.height * 1 / 15),
+            ],
+          ),
         ),
       ),
     );

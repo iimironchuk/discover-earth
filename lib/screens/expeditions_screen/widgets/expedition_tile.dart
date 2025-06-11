@@ -19,22 +19,22 @@ class ExpeditionTile extends StatelessWidget {
     required this.image,
   });
 
-  Widget _buildTitleContent(TextTheme textTheme, bool smallerThanDesktop) {
+  Widget _buildTitleContent(TextTheme textTheme, bool smallerThanTablet) {
     final children = <Widget>[
       Text(
         expeditionTitle,
         style: textTheme.titleMedium!.copyWith(
-          fontSize: smallerThanDesktop ? 16.0 : 24.0,
+          fontSize: smallerThanTablet ? 16.0 : 24.0,
         ),
       ),
-      !smallerThanDesktop ? Spacer() : SizedBox(),
+      !smallerThanTablet ? Spacer() : SizedBox(),
       Row(
         children: [
           Padding(
             padding: const EdgeInsets.only(right: 4.0),
             child: Container(
-              width: smallerThanDesktop ? 8.0 : 12.0,
-              height: smallerThanDesktop ? 8.0 : 12.0,
+              width: smallerThanTablet ? 8.0 : 12.0,
+              height: smallerThanTablet ? 8.0 : 12.0,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: AppColors.mainSand,
@@ -43,7 +43,7 @@ class ExpeditionTile extends StatelessWidget {
           ),
           Text(
             'Accepting Applications',
-            style: textTheme.labelMedium!.copyWith(fontSize: smallerThanDesktop ? 10.0 : 14.0),
+            style: textTheme.labelMedium!.copyWith(fontSize: smallerThanTablet ? 10.0 : 14.0),
             softWrap: true,
             overflow: TextOverflow.ellipsis,
           ),
@@ -51,18 +51,18 @@ class ExpeditionTile extends StatelessWidget {
       ),
     ];
 
-    return smallerThanDesktop
+    return smallerThanTablet
         ? Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: children,
-        )
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: children,
+    )
         : Row(children: children);
   }
 
   Widget _buildAdditionalInfoContent(
-    TextTheme textTheme,
-    bool smallerThanDesktop,
-  ) {
+      TextTheme textTheme,
+      bool smallerThanTablet,
+      ) {
     final children = <Widget>[
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,25 +71,25 @@ class ExpeditionTile extends StatelessWidget {
             date,
             style: textTheme.labelMedium!.copyWith(
               color: AppColors.lightText,
-              fontSize: smallerThanDesktop ? 10 : 14.0,
+              fontSize: smallerThanTablet ? 10 : 14.0,
             ),
           ),
-          SizedBox(height: smallerThanDesktop ? 0 : 4.0),
+          SizedBox(height: smallerThanTablet ? 0 : 4.0),
           Text(
             'Group Size: $groupSize Patrons',
             style: textTheme.labelMedium!.copyWith(
               color: AppColors.lightText,
-              fontSize: smallerThanDesktop ? 10 : 14.0,
+              fontSize: smallerThanTablet ? 10 : 14.0,
             ),
           ),
         ],
       ),
-      !smallerThanDesktop ? Spacer() : SizedBox(),
+      !smallerThanTablet ? Spacer() : SizedBox(),
       Padding(
-        padding: EdgeInsets.only(top: smallerThanDesktop ? 8.0 : 0),
+        padding: EdgeInsets.only(top: smallerThanTablet ? 8.0 : 0),
         child: SizedBox(
-          width: smallerThanDesktop ? 120.0 : 178.0,
-          height: smallerThanDesktop ? 20.0 : 36.0,
+          width: smallerThanTablet ? 120.0 : 178.0,
+          height: smallerThanTablet ? 20.0 : 36.0,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.mainGreen,
@@ -112,11 +112,11 @@ class ExpeditionTile extends StatelessWidget {
       ),
     ];
 
-    return smallerThanDesktop
+    return smallerThanTablet
         ? Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: children,
-        )
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: children,
+    )
         : Row(children: children);
   }
 
@@ -126,52 +126,63 @@ class ExpeditionTile extends StatelessWidget {
     final smallerThanDesktop = ResponsiveBreakpoints.of(
       context,
     ).smallerThan(DESKTOP);
+    final smallerThanTablet = ResponsiveBreakpoints.of(context).smallerThan(TABLET);
+    final smallerThanLaptop = ResponsiveBreakpoints.of(context).smallerThan('Laptop');
     final isMobile = ResponsiveBreakpoints.of(context).isMobile;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-      child: AspectRatio(
-        aspectRatio: 716 / 572,
+      // child: AspectRatio(
+      //   aspectRatio: 716 / 600,
         child: Container(
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
-          // width: 600.0,
-          // height: tileHeight,
-          child: Stack(
+          height: 522.0,
+          child: Column(
             children: [
-              Positioned.fill(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: image.image(fit: BoxFit.cover),
-                ),
-              ),
-              Positioned(
-                top: 16.0,
-                right: 16.0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(9),
-                    color: AppColors.mainSand,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 4.0,
-                      horizontal: 16.0,
-                    ),
-                    child: Text(
-                      'Limited Spaces',
-                      style: textTheme.labelMedium!.copyWith(
-                        color: AppColors.scaffold,
-                        fontSize: 12.0,
-                        fontWeight: FontWeight.w500,
+              Expanded(
+                flex: 1,
+                child: Stack(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(16),
+                          topRight: Radius.circular(16),
+                        ),
+                        image: DecorationImage(
+                          image: image.provider(),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
+                    Positioned(
+                      top: 16.0,
+                      right: 16.0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(9),
+                          color: AppColors.mainSand,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 4.0,
+                            horizontal: 16.0,
+                          ),
+                          child: Text(
+                            'Limited Spaces',
+                            style: textTheme.labelMedium!.copyWith(
+                              color: AppColors.scaffold,
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                // height: 250.0,
+              Expanded(
+                flex: 1,
                 child: Container(
                   decoration: BoxDecoration(
                     color: AppColors.scaffold,
@@ -180,27 +191,24 @@ class ExpeditionTile extends StatelessWidget {
                     ),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.all(!smallerThanDesktop ? isMobile ? 8.0 : 32.0  : 16.0),
+                    padding: EdgeInsets.all(!smallerThanDesktop ? 32.0 : smallerThanTablet ? 8.0 : 16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _buildTitleContent(textTheme, smallerThanDesktop),
+                        _buildTitleContent(textTheme, smallerThanLaptop),
                         Padding(
-                          padding:  EdgeInsets.only(
-                            top: smallerThanDesktop ? 10.0 :  18.0,
-                            bottom: smallerThanDesktop ? 12.0 : 20.0,
+                          padding: EdgeInsets.only(
+                            top: smallerThanTablet ? 8.0 : 18.0,
+                            bottom: smallerThanTablet ? 10.0 : 20.0,
                           ),
                           child: Text(
                             description,
                             style: textTheme.labelMedium!.copyWith(
-                              fontSize: smallerThanDesktop ? 10.0 : 16.0,
+                              fontSize: smallerThanLaptop ? 12.0 : 16.0,
                             ),
                           ),
                         ),
-                        _buildAdditionalInfoContent(
-                          textTheme,
-                          smallerThanDesktop,
-                        ),
+                        _buildAdditionalInfoContent(textTheme, smallerThanLaptop),
                       ],
                     ),
                   ),
@@ -209,7 +217,7 @@ class ExpeditionTile extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      // ),
     );
   }
 }

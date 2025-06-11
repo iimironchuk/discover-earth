@@ -63,28 +63,43 @@ class MainScreen extends StatelessWidget {
     final isMobile = ResponsiveBreakpoints.of(context).isMobile;
     final isTablet = ResponsiveBreakpoints.of(context).isTablet;
     final textTheme = Theme.of(context).textTheme;
-    return Stack(
-      children: [
-        Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height - 68.0,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: Assets.images.mainImage.provider(),
-              fit: BoxFit.cover,
+    final smallerThanLaptop = ResponsiveBreakpoints.of(
+      context,
+    ).smallerThan('Laptop');
+    return SizedBox(
+      width: double.infinity,
+      height:
+          !smallerThanLaptop ? MediaQuery.of(context).size.height - 68 : null,
+      child: Stack(
+        children: [
+          Positioned.fill(
+            child: Assets.images.mainImage.image(fit: BoxFit.cover),
+          ),
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    AppColors.mainGreen.withValues(alpha: 0.8),
+                    AppColors.mainGreen.withValues(alpha: 0.4),
+                    AppColors.mainGreen.withValues(alpha: 0),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
             ),
           ),
-          child: Padding(
-            padding: EdgeInsets.only(
-              left: MediaQuery.of(context).size.width * 1 / 8,
-              top: MediaQuery.of(context).size.height * 1 / 15,
-            ),
-            child: SingleChildScrollView(
-              child: FractionallySizedBox(
-                alignment: Alignment.centerLeft,
-                widthFactor: 0.7,
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding:  EdgeInsets.only(left: smallerThanLaptop  ? 50.0 : 224.0),
+              child: Container(
+                // alignment: Alignment.bottomRight,
+                constraints: BoxConstraints(maxWidth: 672.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       'Discover Earth`s Most\nSacred Sanctuaries',
@@ -92,8 +107,8 @@ class MainScreen extends StatelessWidget {
                         fontSize:
                             !smallerThanDesktop
                                 ? isMobile
-                                ? 30.0
-                                : 72.0
+                                    ? 30.0
+                                    : 72.0
                                 : 48.0,
                         color: AppColors.scaffold,
                       ),
@@ -108,9 +123,7 @@ class MainScreen extends StatelessWidget {
                         width: 500.0,
                         child: Text(
                           'An immersive journey into the world`s most untouched natural wonders, curated for those who seek the extraordinary.',
-                          style: Theme.of(
-                            context,
-                          ).textTheme.labelMedium!.copyWith(
+                          style: Theme.of(context).textTheme.labelMedium!.copyWith(
                             fontSize:
                                 !isTablet
                                     ? isMobile
@@ -131,8 +144,8 @@ class MainScreen extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
