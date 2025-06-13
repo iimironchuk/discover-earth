@@ -55,14 +55,12 @@ class NatureArtScreen extends StatelessWidget {
     ).smallerThan('Laptop');
     final fullHeight = MediaQuery.of(context).size.height;
     final fullWidth = MediaQuery.of(context).size.width;
-    return SingleChildScrollView(
-      child: Container(
-        color: AppColors.backgroundGray,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: fullWidth * 1 / 8,
-            vertical: fullHeight * 1 / 15,
-          ),
+    return Container(
+      width: double.infinity,
+      color: AppColors.backgroundGray,
+      child: Center(
+        child: Container(
+          constraints: BoxConstraints(maxWidth: 1536.0),
           child: Column(
             children: [
               Text(
@@ -90,26 +88,35 @@ class NatureArtScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              GridView.builder(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount:
-                      !smallerThanLaptop
-                          ? smallerThanDesktop
-                              ? 2
-                              : 3
-                          : 1,
-                  mainAxisSpacing: 24.0,
-                  crossAxisSpacing: 24.0,
-                  childAspectRatio: 470.0 / 512.0,
-                ),
-                itemCount: _artTilesList.length,
-                itemBuilder: (context, index) {
-                  return _artTilesList[index];
-                },
-              ),
+              smallerThanDesktop
+                  ? SizedBox(
+                    height: 512.0,
+                    child: PageView.builder(
+                      controller: PageController(viewportFraction: 0.85),
+                      itemCount: _artTilesList.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Center(
+                            child: SizedBox(
+                              width: 470.0,
+                              child: _artTilesList[index],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  )
+                  : SizedBox(
+                    height: 512.0,
+                    child: Row(
+                      children: [
+                        ..._artTilesList.map(
+                          (expedition) => Expanded(child: expedition),
+                        ),
+                      ],
+                    ),
+                  ),
               Padding(
                 padding: const EdgeInsets.only(top: 48.0),
                 child: Container(
@@ -123,7 +130,7 @@ class NatureArtScreen extends StatelessWidget {
                       'Explore Full Collection',
                       style: textTheme.labelMedium!.copyWith(
                         color: AppColors.mainGreen,
-                        fontWeight: FontWeight.w600
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),

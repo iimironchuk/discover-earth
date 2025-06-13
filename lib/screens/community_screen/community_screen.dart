@@ -22,71 +22,70 @@ class CommunityScreen extends StatelessWidget {
     return SingleChildScrollView(
       child: Container(
         color: AppColors.backgroundGray,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: fullWidth * 1 / 8,
-            vertical: fullHeight * 1 / 15,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Join Our Community',
-                style: textTheme.titleMedium!.copyWith(
-                  fontWeight: FontWeight.w300,
-                  color: AppColors.mainGreen,
-                  fontSize: smallerThanDesktop ? 34.0 : 48.0,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0, bottom: 64.0),
-                child: SizedBox(
-                  width: 600.0,
-                  child: Text(
-                    'Subscribe to receive curated insights from our journal, invitations to exclusive events, and updates on our conservation initiatives.',
-                    style: textTheme.labelMedium!.copyWith(
-                      fontSize: smallerThanDesktop ? 14.0 : 18.0,
-                      color: AppColors.mainText,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    textAlign: TextAlign.center,
-                    softWrap: true,
-                    overflow: TextOverflow.visible,
+        child: Center(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 768.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Join Our Community',
+                  style: textTheme.titleMedium!.copyWith(
+                    fontWeight: FontWeight.w300,
+                    color: AppColors.mainGreen,
+                    fontSize: smallerThanDesktop ? 34.0 : 48.0,
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 512.0,
-                child: Row(
-                  children: [
-                    Expanded(child: CommunityTextField()),
-                    SizedBox(width: 16.0),
-                    SizedBox(
-                      width: 135.0,
-                      height: 44.0,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        child: Text('Subscribe'),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0, bottom: 64.0),
+                  child: SizedBox(
+                    width: 600.0,
+                    child: Text(
+                      'Subscribe to receive curated insights from our journal, invitations to exclusive events, and updates on our conservation initiatives.',
+                      style: textTheme.labelMedium!.copyWith(
+                        fontSize: smallerThanDesktop ? 14.0 : 18.0,
+                        color: AppColors.mainText,
+                        fontWeight: FontWeight.w400,
                       ),
+                      textAlign: TextAlign.center,
+                      softWrap: true,
+                      overflow: TextOverflow.visible,
                     ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: Text(
-                  'By subscribing, you agree to our Privacy Policy and consent to receive updates from Eden Reverie.',
-                  style: textTheme.labelMedium!.copyWith(
-                    fontSize: smallerThanLaptop ? 11.0 : 14.0,
                   ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  width: 512.0,
+                  child: Row(
+                    children: [
+                      Expanded(child: CommunityTextField()),
+                      SizedBox(width: 16.0),
+                      SizedBox(
+                        width: 135.0,
+                        height: 44.0,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: Text('Subscribe'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: Text(
+                    'By subscribing, you agree to our Privacy Policy and consent to receive updates from Eden Reverie.',
+                    style: textTheme.labelMedium!.copyWith(
+                      fontSize: smallerThanLaptop ? 11.0 : 14.0,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -40,7 +40,7 @@ class PatronsClubPhoto extends StatelessWidget {
                     color: AppColors.scaffold,
                     boxShadow: [
                       BoxShadow(
-                        color: AppColors.mainText.withOpacity(0.5),
+                        color: AppColors.mainText.withValues(alpha: 0.5),
                         offset: Offset(5 * scaleFactor, 5 * scaleFactor),
                         blurRadius: 110 * scaleFactor,
                         blurStyle: BlurStyle.outer,
@@ -100,7 +100,7 @@ class PatronsClubPhoto extends StatelessWidget {
                             fontSize: 14.0 * scaleFactor,
                           ),
                           softWrap: true,
-                          overflow: isMobile ? TextOverflow.ellipsis : TextOverflow.visible,
+                          overflow: TextOverflow.visible,
                         ),
                       ],
                     ),

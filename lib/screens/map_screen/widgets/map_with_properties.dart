@@ -46,15 +46,11 @@ class _MapWithPropertiesState extends State<MapWithProperties> {
                   widthFactor:
                       smallerThanLaptop
                           ? 0.4
-                          : largerThanDesktop
-                          ? 0.1
-                          : 0.2,
+                          :  0.2,
                   heightFactor:
                       smallerThanLaptop
                           ? 0.9
-                          : largerThanDesktop
-                          ? 0.3
-                          : 0.6,
+                          : 0.5,
                   child: PropertiesColumn(),
                 ),
               ),

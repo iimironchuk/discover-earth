@@ -15,12 +15,12 @@ class PatronsClubScreen extends StatelessWidget {
     final smallerThanDesktop = ResponsiveBreakpoints.of(
       context,
     ).smallerThan(DESKTOP);
-    return SingleChildScrollView(
-      child: Container(
-        padding: EdgeInsets.only(bottom: fullHeight * 1 / 15),
-        color: AppColors.scaffold,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: fullWidth * 1 / 8, vertical: fullHeight * 1/15),
+    return Container(color: AppColors.scaffold,
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: 1536.0
+          ),
           child: smallerThanDesktop ? Column(
             children: [
               PatronsClubInfoColumn(),

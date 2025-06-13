@@ -19,14 +19,10 @@ class ConversationContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final fullWidth = MediaQuery.of(context).size.width;
-    final scaleFactor = (fullWidth / 344).clamp(0.7, 1.0);
     final smallerThanLaptop = ResponsiveBreakpoints.of(
       context,
     ).smallerThan('Laptop');
     return Container(
-      width: 344.0,
-      height: 224.0,
       decoration: BoxDecoration(
         color: AppColors.scaffold,
         borderRadius: BorderRadius.circular(16),

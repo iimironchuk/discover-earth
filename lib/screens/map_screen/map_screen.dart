@@ -14,16 +14,13 @@ class MapScreen extends StatelessWidget {
     final smallerThanDesktop = ResponsiveBreakpoints.of(
       context,
     ).smallerThan(DESKTOP);
-    final isMobile = ResponsiveBreakpoints.of(context).isMobile;
-    final fullHeight = MediaQuery.of(context).size.height;
-    final fullWidth = MediaQuery.of(context).size.width;
-    return SingleChildScrollView(
-      child: Container(
-        color: AppColors.backgroundGray,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: fullWidth * 1 / 8,
-            vertical: fullHeight * 1 / 15,
+    final smallerThanLaptop = ResponsiveBreakpoints.of(context).smallerThan('Laptop');
+    return Container(
+      color: AppColors.backgroundGray,
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: 1536.0,
           ),
           child: Column(
             children: [
@@ -52,7 +49,7 @@ class MapScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              isMobile ? MapWithPropertiesRow() : MapWithProperties(),
+              smallerThanLaptop ? MapWithPropertiesRow() : MapWithProperties(),
               Padding(
                 padding: const EdgeInsets.only(top: 48.0),
                 child: ElevatedButton(

@@ -79,14 +79,11 @@ class ConversationScreen extends StatelessWidget {
     final isMobile = ResponsiveBreakpoints.of(context).isMobile;
     final fullHeight = MediaQuery.of(context).size.height;
     final fullWidth = MediaQuery.of(context).size.width;
-    return SingleChildScrollView(
-      child: Container(
-        color: AppColors.scaffold,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: fullWidth * 1 / 8,
-            vertical: fullHeight * 1 / 15,
-          ),
+    return Container(
+      color: AppColors.scaffold,
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 1536.0),
           child: Column(
             children: [
               Text(
@@ -114,29 +111,19 @@ class ConversationScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              // GridView.builder(
-              //   padding: EdgeInsets.zero,
-              //   shrinkWrap: true,
-              //   physics: NeverScrollableScrollPhysics(),
-              //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              //     crossAxisCount:
-              //         isTablet
-              //             ? 2
-              //             : isMobile
-              //             ? 1
-              //             : 4,
-              //     mainAxisSpacing: 24.0,
-              //     crossAxisSpacing: 24.0,
-              //     childAspectRatio: 344.0 /  340.0,
-              //   ),
-              //   itemCount: _conversationItems.length,
-              //   itemBuilder: (context, index) {
-              //     return _conversationItems[index];
-              //   },
-              // ),
-              Wrap(children: _conversationItems),
+              // Wrap(children: _conversationItems),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ..._conversationItems.map((item) {
+                    return item;
+                  }),
+                ],
+              ),
               Padding(
-                padding: EdgeInsets.only(top: smallerThanLaptop ? 32.0 : 64.0),
+                padding: EdgeInsets.only(
+                  top: smallerThanLaptop ? 32.0 : 64.0,
+                ),
                 child: Container(
                   decoration: BoxDecoration(
                     color: AppColors.scaffold,
@@ -159,28 +146,44 @@ class ConversationScreen extends StatelessWidget {
                           ),
                         ),
                       ),
+                      // Wrap(children: _conversationInitiative,)
+                      smallerThanLaptop ? Column(
+                        children: _conversationInitiative.map((item) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12.0),
+                            child: item,
+                          );
+                        }).toList(),
+                      )
+                          :
                       GridView.builder(
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: smallerThanLaptop ? 1 : 2,
-                          childAspectRatio: 600.0 / 200.0,
+                          crossAxisCount:  2,
                           crossAxisSpacing: 20.0,
                           mainAxisSpacing: 20.0,
+                          childAspectRatio: smallerThanLaptop ? 3.5 : 3.0,
                         ),
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
-
                         itemCount: _conversationInitiative.length,
                         itemBuilder: (context, index) {
-                          return _conversationInitiative[index];
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: _conversationInitiative[index],
+                          );
+
                         },
                       ),
+
                     ],
                   ),
                 ),
               ),
               Padding(
-                padding:  EdgeInsets.only(top: smallerThanLaptop ? 24.0 : 48.0),
+                padding: EdgeInsets.only(
+                  top: smallerThanLaptop ? 24.0 : 48.0,
+                ),
                 child: SizedBox(
                   width: 200.0,
                   height: 44.0,
