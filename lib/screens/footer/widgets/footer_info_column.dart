@@ -11,27 +11,25 @@ class FooterInfoColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final smallerThanLaptop = ResponsiveBreakpoints.of(context).smallerThan('Laptop');
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(title, style: textTheme.titleMedium!.copyWith(fontSize: 18.0)),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ...items.map((item) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Text(
-                    item,
-                    style: textTheme.labelMedium!.copyWith(fontSize: smallerThanLaptop ? 12.0 : 16.0),
-                  ),
-                );
-              }),
-            ],
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(title, style: textTheme.titleMedium!.copyWith(fontSize: 18.0)),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ...items.map((item) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Text(
+                  item,
+                  style: textTheme.labelMedium!.copyWith(fontSize: smallerThanLaptop ? 12.0 : 16.0),
+                ),
+              );
+            }),
+          ],
+        ),
+      ],
     );
   }
 }

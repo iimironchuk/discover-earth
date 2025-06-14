@@ -17,11 +17,19 @@ class CommunityScreen extends StatelessWidget {
       context,
     ).smallerThan('Laptop');
     final isMobile = ResponsiveBreakpoints.of(context).isMobile;
-    final fullHeight = MediaQuery.of(context).size.height;
-    final fullWidth = MediaQuery.of(context).size.width;
-    return SingleChildScrollView(
-      child: Container(
-        color: AppColors.backgroundGray,
+    final isTablet = ResponsiveBreakpoints.of(context).isTablet;
+    return Container(
+      color: AppColors.backgroundGray,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical:
+              isMobile
+                  ? 20.0
+                  : isTablet
+                  ? 40.0
+                  : 80.0,
+          horizontal: smallerThanDesktop ? 30.0 : 10.0,
+        ),
         child: Center(
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: 768.0),

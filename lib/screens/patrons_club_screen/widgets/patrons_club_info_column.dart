@@ -16,7 +16,6 @@ class PatronsClubInfoColumn extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: MediaQuery.of(context).size.height * 1 / 15),
         Text(
           'Nature Patrons Club',
           style: textTheme.titleMedium!.copyWith(

@@ -33,17 +33,23 @@ class CustomDrawer extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(left: 30.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 45.0,),
                 HeaderLabel(title: 'Living Gallery', onTap: onScrollToGallery),
+                SizedBox(height: 15.0,),
                 HeaderLabel(title: 'Expeditions', onTap: onScrollToExpeditions),
+                SizedBox(height: 15.0,),
                 HeaderLabel(
                   title: 'Nature Patrons',
                   onTap: onScrollToNaturePatrons,
                 ),
+                SizedBox(height: 15.0,),
                 HeaderLabel(title: 'Art Vault', onTap: onScrollToArtVault),
+                SizedBox(height: 15.0,),
                 HeaderLabel(title: 'Journal', onTap: onScrollToJournal),
+                Spacer(),
                 if (isMobile)
                   Row(
                     children: [
@@ -59,6 +65,7 @@ class CustomDrawer extends StatelessWidget {
                       LanguageDropdown(),
                     ],
                   ),
+                SizedBox(height: 15.0,),
               ],
             ),
           ),

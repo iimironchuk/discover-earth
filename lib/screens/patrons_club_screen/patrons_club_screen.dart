@@ -10,35 +10,45 @@ class PatronsClubScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fullWidth = MediaQuery.of(context).size.width;
-    final fullHeight = MediaQuery.of(context).size.height;
+    final isMobile = ResponsiveBreakpoints.of(context).isMobile;
+    final isTablet = ResponsiveBreakpoints.of(context).isTablet;
     final smallerThanDesktop = ResponsiveBreakpoints.of(
       context,
     ).smallerThan(DESKTOP);
-    return Container(color: AppColors.scaffold,
-      child: Center(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: 1536.0
-          ),
-          child: smallerThanDesktop ? Column(
-            children: [
-              PatronsClubInfoColumn(),
-              Padding(
-                padding: const EdgeInsets.only(top: 30.0),
-                child: PatronsClubPhoto(),
-              )
-            ],
-          ) : Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                flex: 1,
-                child: PatronsClubInfoColumn()
-              ),
-              const SizedBox(width: 40.0),
-              Expanded(flex: 1, child: PatronsClubPhoto()),
-            ],
+    return Container(
+      color: AppColors.scaffold,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: smallerThanDesktop ? 30.0 : 10.0,
+          vertical:
+              isMobile
+                  ? 20.0
+                  : isTablet
+                  ? 40.0
+                  : 80.0,
+        ),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 1536.0),
+            child:
+                smallerThanDesktop
+                    ? Column(
+                      children: [
+                        PatronsClubInfoColumn(),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 30.0),
+                          child: PatronsClubPhoto(),
+                        ),
+                      ],
+                    )
+                    : Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(flex: 1, child: PatronsClubInfoColumn()),
+                        const SizedBox(width: 40.0),
+                        Expanded(flex: 1, child: PatronsClubPhoto()),
+                      ],
+                    ),
           ),
         ),
       ),

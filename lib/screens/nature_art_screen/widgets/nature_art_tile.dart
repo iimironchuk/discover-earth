@@ -130,7 +130,6 @@ class NatureArtTile extends StatelessWidget {
                           ],
                         ),
                       ),
-
                       Padding(
                         padding: EdgeInsets.only(
                           top: smallerThanDesktop ? 8.0 : 13.0,

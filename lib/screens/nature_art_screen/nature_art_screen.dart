@@ -50,93 +50,102 @@ class NatureArtScreen extends StatelessWidget {
     final smallerThanDesktop = ResponsiveBreakpoints.of(
       context,
     ).smallerThan(DESKTOP);
-    final smallerThanLaptop = ResponsiveBreakpoints.of(
-      context,
-    ).smallerThan('Laptop');
-    final fullHeight = MediaQuery.of(context).size.height;
-    final fullWidth = MediaQuery.of(context).size.width;
+    final isMobile = ResponsiveBreakpoints.of(context).isMobile;
+    final isTablet = ResponsiveBreakpoints.of(context).isTablet;
     return Container(
       width: double.infinity,
       color: AppColors.backgroundGray,
-      child: Center(
-        child: Container(
-          constraints: BoxConstraints(maxWidth: 1536.0),
-          child: Column(
-            children: [
-              Text(
-                'Digital Nature Art Vault',
-                style: textTheme.titleMedium!.copyWith(
-                  fontWeight: FontWeight.w300,
-                  color: AppColors.mainGreen,
-                  fontSize: smallerThanDesktop ? 34.0 : 48.0,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0, bottom: 64.0),
-                child: SizedBox(
-                  width: 600.0,
-                  child: Text(
-                    'Limited edition digital masterpieces by renowned nature artists, with AR enhancement capabilities and conservation impact tracking.',
-                    style: textTheme.labelMedium!.copyWith(
-                      fontSize: smallerThanDesktop ? 14.0 : 18.0,
-                      color: AppColors.mainText,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    textAlign: TextAlign.center,
-                    softWrap: true,
-                    overflow: TextOverflow.visible,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical:
+              isMobile
+                  ? 20.0
+                  : isTablet
+                  ? 40.0
+                  : 80.0,
+        ),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 1536.0),
+            child: Column(
+              children: [
+                Text(
+                  'Digital Nature Art Vault',
+                  style: textTheme.titleMedium!.copyWith(
+                    fontWeight: FontWeight.w300,
+                    color: AppColors.mainGreen,
+                    fontSize: smallerThanDesktop ? 34.0 : 48.0,
                   ),
                 ),
-              ),
-              smallerThanDesktop
-                  ? SizedBox(
-                    height: 512.0,
-                    child: PageView.builder(
-                      controller: PageController(viewportFraction: 0.85),
-                      itemCount: _artTilesList.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Center(
-                            child: SizedBox(
-                              width: 470.0,
-                              child: _artTilesList[index],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  )
-                  : SizedBox(
-                    height: 512.0,
-                    child: Row(
-                      children: [
-                        ..._artTilesList.map(
-                          (expedition) => Expanded(child: expedition),
-                        ),
-                      ],
-                    ),
-                  ),
-              Padding(
-                padding: const EdgeInsets.only(top: 48.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: AppColors.mainGreen),
-                  ),
-                  child: TextButton(
-                    onPressed: () {},
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0, bottom: 64.0),
+                  child: SizedBox(
+                    width: 600.0,
                     child: Text(
-                      'Explore Full Collection',
+                      'Limited edition digital masterpieces by renowned nature artists, with AR enhancement capabilities and conservation impact tracking.',
                       style: textTheme.labelMedium!.copyWith(
-                        color: AppColors.mainGreen,
-                        fontWeight: FontWeight.w600,
+                        fontSize: smallerThanDesktop ? 14.0 : 18.0,
+                        color: AppColors.mainText,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      textAlign: TextAlign.center,
+                      softWrap: true,
+                      overflow: TextOverflow.visible,
+                    ),
+                  ),
+                ),
+                smallerThanDesktop
+                    ? SizedBox(
+                      height: 512.0,
+                      child: PageView.builder(
+                        controller: PageController(viewportFraction: 0.85),
+                        itemCount: _artTilesList.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0,
+                            ),
+                            child: Center(
+                              child: SizedBox(
+                                width: 470.0,
+                                child: _artTilesList[index],
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    )
+                    : SizedBox(
+                      height: 512.0,
+                      child: Row(
+                        children: [
+                          ..._artTilesList.map(
+                            (expedition) => Expanded(child: expedition),
+                          ),
+                        ],
+                      ),
+                    ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 48.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: AppColors.mainGreen),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Explore Full Collection',
+                        style: textTheme.labelMedium!.copyWith(
+                          color: AppColors.mainGreen,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

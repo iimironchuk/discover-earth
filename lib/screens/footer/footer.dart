@@ -59,36 +59,29 @@ class Footer extends StatelessWidget {
     ).smallerThan('Laptop');
     final isMobile = ResponsiveBreakpoints.of(context).isMobile;
     final isTablet = ResponsiveBreakpoints.of(context).isTablet;
-    final fullHeight = MediaQuery.of(context).size.height;
-    final fullWidth = MediaQuery.of(context).size.width;
-    return SingleChildScrollView(
-      child: Container(
-        color: AppColors.scaffold,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: fullWidth * 1 / 10,
-            vertical: fullHeight * 1 / 15,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              GridView(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount:
-                      isMobile
-                          ? 1
-                          : isTablet
-                          ? 2
-                          : 4,
-                  childAspectRatio: 330.0 / 300.0,
-                ),
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 50.0),
-                    child: SingleChildScrollView(
+    return Container(
+      color: AppColors.scaffold,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical:
+              isMobile
+                  ? 20.0
+                  : isTablet
+                  ? 40.0
+                  : 80.0,
+          horizontal: smallerThanDesktop ? 30.0 : 10.0,
+        ),
+        child: Center(
+          // alignment: Alignment.centerLeft,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 1536.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Wrap(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 50.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -132,73 +125,101 @@ class Footer extends StatelessWidget {
                         ],
                       ),
                     ),
-                  ),
 
-                  FooterInfoColumn(title: 'Explore', items: exploreItems),
-                  FooterInfoColumn(title: 'Information', items: infoItems),
-                  FooterInfoColumn(title: 'Legal', items: legalItems),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 60.0, bottom: 40.0),
-                child: Divider(color: AppColors.lightGrey),
-              ),
-              smallerThanLaptop
-                  ? Column(
-                    children: [
-                      Text(
-                        '© 2025 Eden Reverie. All rights reserved.',
-                        style: textTheme.labelMedium!.copyWith(
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.mainText.withValues(alpha: 0.5),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        right: smallerThanLaptop ? 100.0 : 170.0,
+                        top: smallerThanLaptop ? 15.0 : 0,
+                      ),
+                      child: FooterInfoColumn(
+                        title: 'Explore',
+                        items: exploreItems,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        right: smallerThanLaptop ? 100.0 : 150.0,
+                        top: smallerThanLaptop ? 15.0 : 0,
+                      ),
+                      child: FooterInfoColumn(
+                        title: 'Information',
+                        items: infoItems,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: smallerThanLaptop ? 15.0 : 0,
+                          right: smallerThanLaptop ? 100.0 : 150.0
+                      ),
+                      child: FooterInfoColumn(
+                        title: 'Legal',
+                        items: legalItems,
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 60.0, bottom: 40.0),
+                  child: Divider(color: AppColors.lightGrey),
+                ),
+                smallerThanLaptop
+                    ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '© 2025 Eden Reverie. All rights reserved.',
+                          style: textTheme.labelMedium!.copyWith(
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.mainText.withValues(alpha: 0.5),
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 10.0),
-                      Row(
-                        children: [
-                          ...paymentItems.map((image) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 13.0,
-                              ),
-                              child: SvgPicture.asset(
-                                image,
-                                fit: BoxFit.scaleDown,
-                              ),
-                            );
-                          }),
-                        ],
-                      ),
-                    ],
-                  )
-                  : Row(
-                    children: [
-                      Text(
-                        '© 2025 Eden Reverie. All rights reserved.',
-                        style: textTheme.labelMedium!.copyWith(
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.mainText.withValues(alpha: 0.5),
+                        SizedBox(height: 10.0),
+                        Row(
+                          children: [
+                            ...paymentItems.map((image) {
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 13.0,
+                                ),
+                                child: SvgPicture.asset(
+                                  image,
+                                  fit: BoxFit.scaleDown,
+                                ),
+                              );
+                            }),
+                          ],
                         ),
-                      ),
-                      Spacer(),
-                      Row(
-                        children: [
-                          ...paymentItems.map((image) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 13.0,
-                              ),
-                              child: SvgPicture.asset(
-                                image,
-                                fit: BoxFit.scaleDown,
-                              ),
-                            );
-                          }),
-                        ],
-                      ),
-                    ],
-                  ),
-            ],
+                      ],
+                    )
+                    : Row(
+                      children: [
+                        Text(
+                          '© 2025 Eden Reverie. All rights reserved.',
+                          style: textTheme.labelMedium!.copyWith(
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.mainText.withValues(alpha: 0.5),
+                          ),
+                        ),
+                        Spacer(),
+                        Row(
+                          children: [
+                            ...paymentItems.map((image) {
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 13.0,
+                                ),
+                                child: SvgPicture.asset(
+                                  image,
+                                  fit: BoxFit.scaleDown,
+                                ),
+                              );
+                            }),
+                          ],
+                        ),
+                      ],
+                    ),
+              ],
+            ),
           ),
         ),
       ),
