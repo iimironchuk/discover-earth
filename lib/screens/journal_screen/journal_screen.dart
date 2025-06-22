@@ -54,6 +54,7 @@ class JournalScreen extends StatelessWidget {
     ).smallerThan('Laptop');
     final isMobile = ResponsiveBreakpoints.of(context).isMobile;
     final isTablet = ResponsiveBreakpoints.of(context).isTablet;
+    final isLaptop = ResponsiveBreakpoints.of(context).equals('Laptop');
     return Container(
       width: double.infinity,
       color: AppColors.scaffold,
@@ -100,7 +101,14 @@ class JournalScreen extends StatelessWidget {
                     ? SizedBox(
                       height: 486.0,
                       child: PageView.builder(
-                        controller: PageController(viewportFraction: 0.85),
+                        controller: PageController(
+                          viewportFraction:
+                              isLaptop
+                                  ? 0.55
+                                  : isMobile
+                                  ? 0.85
+                                  : 0.75,
+                        ),
                         itemCount: _journalsList.length,
                         itemBuilder: (context, index) {
                           return Padding(

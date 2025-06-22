@@ -36,6 +36,7 @@ class CustomDrawer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Spacer(),
                 SizedBox(height: 45.0,),
                 HeaderLabel(title: 'Living Gallery', onTap: onScrollToGallery),
                 SizedBox(height: 15.0,),

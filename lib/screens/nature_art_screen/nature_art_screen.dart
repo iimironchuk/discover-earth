@@ -51,6 +51,7 @@ class NatureArtScreen extends StatelessWidget {
       context,
     ).smallerThan(DESKTOP);
     final isMobile = ResponsiveBreakpoints.of(context).isMobile;
+    final isLaptop = ResponsiveBreakpoints.of(context).equals('Laptop');
     final isTablet = ResponsiveBreakpoints.of(context).isTablet;
     return Container(
       width: double.infinity,
@@ -98,7 +99,11 @@ class NatureArtScreen extends StatelessWidget {
                     ? SizedBox(
                       height: 512.0,
                       child: PageView.builder(
-                        controller: PageController(viewportFraction: 0.85),
+                        controller: PageController(viewportFraction: isLaptop
+                            ? 0.55
+                            : isMobile
+                            ? 0.85
+                            : 0.75,),
                         itemCount: _artTilesList.length,
                         itemBuilder: (context, index) {
                           return Padding(
